@@ -7,7 +7,9 @@ const SearchForm = () => {
     return (
         <form className={style.searchForm}>
             <TextInput placeholder={"Search..."}/>
-            <Button text="Search"/>
+            <Button>
+                <span className="fa fa-search" />
+            </Button>
         </form>
     );
 };

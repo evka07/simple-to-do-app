@@ -6,16 +6,18 @@ import ReactDOM from 'react-dom';
 import 'font-awesome/css/font-awesome.min.css';
 import './styles/normalize.scss';
 import './styles/global.scss';
-
+import Container from "./components/Container/Container.jsx";
 
 
 function App() {
 
     return (
         <div>
-            <Hero/>
-            <SearchForm/>
-            <List/>
+            <Container>
+                <Hero/>
+                <SearchForm/>
+                <List/>
+            </Container>
         </div>
     )
 }

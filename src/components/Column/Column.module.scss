@@ -17,9 +17,13 @@
 }
 
 .title {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
   font-size: ($base-size * 1.5);
   margin: 0 0 ($base-size * 1.5) 0;
+
 }
 
 .icon::before {
