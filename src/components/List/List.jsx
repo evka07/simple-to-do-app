@@ -1,9 +1,8 @@
-import style from "./List.module.scss"
-import Column from "../Column/Column.jsx";
-import {useEffect, useState} from "react";
+import styles from './List.module.scss';
+import Column from './../Column/Column';
+import ColumnForm from './../ColumnForm/ColumnForm';
+import { useState } from 'react';
 import shortid from 'shortid';
-import ColumnForm from "../ColumnForm/ColumnForm.jsx";
-
 
 const List = () => {
     const [columns, setColumns] = useState([
@@ -13,22 +12,21 @@ const List = () => {
     ]);
 
     const addColumn = newColumn => {
-        setColumns([...columns, { id: shortid(), title: newColumn.title }]);
+        setColumns([...columns, { id: shortid(), title: newColumn.title, icon: newColumn.icon }]);
     };
 
-
-    return <div>
-        <header className={style.header}>
-            <h2 className={style.title}>Things to do<span>soon!</span></h2>
-        </header>
-        <p className={style.description}>Interesting things I want to check out</p>
-        <section className={style.columns}>
-            {columns.map((colum) => (
-                <Column key={colum.id} title={colum.title} icon={colum.icon}/>
-            ))}
-        </section>
-        <ColumnForm  addColumn={addColumn}/>
-    </div>;
+    return (
+        <div className={styles.list}>
+            <header className={styles.header}>
+                <h2 className={styles.title}>Things to do<span>soon!</span></h2>
+            </header>
+            <p className={styles.description}>Interesting things I want to check out</p>
+            <section className={styles.columns}>
+                {columns.map(column => <Column key={column.id} title={column.title} icon={column.icon} />)}
+            </section>
+            <ColumnForm action={addColumn} />
+        </div>
+    );
 };
 
 export default List;
