@@ -13,7 +13,8 @@
     "font-awesome": "^4.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.69.0"
+    "sass": "^1.69.0",
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
