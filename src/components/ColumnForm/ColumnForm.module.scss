@@ -1,6 +1,12 @@
 .columnForm {
   display: flex;
   justify-content: center;
-  text-align: center;
   padding: 10px 0 0;
+  gap: 10px;
+}
+
+.columnForm  span {
+  font-size: 15px;
+  font-weight: bold;
+  padding-top: 14px;
 }
