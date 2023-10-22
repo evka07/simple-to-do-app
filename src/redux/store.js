@@ -45,20 +45,31 @@ const reducer = (state, action) => {
                     }
                 ]
             }
+
+        case 'TOGGLE_FAVORITE':
+            return {
+                ...state,
+                cards: state.cards.map((card) =>
+                    card.id === action.payload
+                        ? { ...card, isFavorite: !card.isFavorite }
+                        : card
+                ),
+            };
+
         case 'UPDATE_SEARCHSTRING':
 
-            return { ...state, searchString: action.payload };
+            return {...state, searchString: action.payload};
         default:
             return state;
     }
 };
 
-export const getFilteredCards = ({ cards, searchString }, columnId) => cards
+export const getFilteredCards = ({cards, searchString}, columnId) => cards
     .filter(card => card.columnId === columnId && strContains(card.title, searchString));
 
 export const getAllColumns = (state) => state.columns
 
-export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });
+export const addColumn = payload => ({type: 'ADD_COLUMN', payload});
 
 export const addCard = (columnId, title) => ({type: 'ADD_CARD', columnId, title,})
 
@@ -70,8 +81,15 @@ export const getAllLists = state => state.lists
 
 export const addList = (payload) => ({type: 'ADD_LIST', payload})
 
+export const getFavorite = (state) => state.cards.filter((card) => card.isFavorite)
+
+export const toggleFavorite = (cardId) => ({
+    type: 'TOGGLE_FAVORITE',
+    payload: cardId
+})
+
 export const updateSearch = (searchString) => ({
-    type:'UPDATE_SEARCHSTRING',
+    type: 'UPDATE_SEARCHSTRING',
     payload: searchString
 })
 
