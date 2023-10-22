@@ -10,9 +10,12 @@ const Navbar = () => {
 
             <span className={style.navbar__icon + ' fa fa-tasks'}/>
             <ul className={style.navbar__list}>
-                <li className={style.navbar__item}><Link to='/'>Home</Link></li>
-                <li className={style.navbar__item}><Link to='/favorite'>Favorite</Link></li>
-                <li className={style.navbar__item}><Link to='/about' >About</Link></li>
+                <li className={style.navbar__item}><NavLink className={({ isActive }) => isActive ? style.linkActive : style.navbar__item}
+                             to="/">Home</NavLink></li>
+                <li className={style.navbar__item}><NavLink className={({ isActive }) => isActive ? style.linkActive : style.navbar__item}
+                                                            to="/favorite">Favorite</NavLink></li>
+                <li className={style.navbar__item}><NavLink className={({ isActive }) => isActive ? style.linkActive : style.navbar__item}
+                                                            to="/about">About</NavLink></li>
             </ul>
 
 

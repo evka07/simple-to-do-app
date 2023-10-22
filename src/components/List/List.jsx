@@ -1,31 +1,35 @@
-import { useSelector } from 'react-redux';
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import styles from './List.module.scss';
 import Column from './../Column/Column';
 import ColumnForm from './../ColumnForm/ColumnForm';
-import React, { useState } from 'react';
-import shortid from 'shortid';
-import CardForm from "../CardForm/CardForm.jsx";
-import {getAllColumns} from "../../redux/store.js";
+import {getListById, getColumnByList} from '../../redux/store.js';
+import {Navigate, useParams} from 'react-router-dom';
+import SearchForm from "../SearchForm/SearchForm.jsx";
+
 
 const List = () => {
-    const columns = useSelector(getAllColumns);
+    const {listId} = useParams();
+    const listData = useSelector((state) => getListById(state, listId));
+    const columns = useSelector((state) => getColumnByList(state, listId));
+    const dispatch = useDispatch()
+    const searchString = useSelector((state) => state.searchString)
 
-
+    if (!listData) return <Navigate to="/"/>
 
     return (
         <div className={styles.list}>
             <header className={styles.header}>
-                <h2 className={styles.title}>Things to do<span>soon!</span></h2>
+                <h2 className={styles.title}>{listData.title}</h2>
             </header>
-            <p className={styles.description}>Interesting things I want to check out</p>
+            <p className={styles.description}>{listData.description}</p>
+            <SearchForm searchString={searchString} dispatch={dispatch}/>
             <section className={styles.columns}>
-                {columns.map(column =>
-                    <Column
-                        key={column.id}
-                        {...column}  />
-                )}
+                {columns.map((column) => (
+                    <Column key={column.id} {...column} />
+                ))}
             </section>
-            <ColumnForm />
+            <ColumnForm listId={listId}/>
         </div>
     );
 };
