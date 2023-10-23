@@ -10,4 +10,15 @@
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+ color: $color-dark;
 }
+
+.favoriteButton {
+  background: transparent;
+  border: none;
+}
+
+.favorite {
+  color: orange;
+}
+

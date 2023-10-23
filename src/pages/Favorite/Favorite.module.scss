@@ -1,0 +1,22 @@
+.favorite {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar {
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+}
+
+.cards {
+  padding: 30px 20px;
+}
+
+.noItem {
+  font-size: 20px;
+  font-weight: bold;
+}
